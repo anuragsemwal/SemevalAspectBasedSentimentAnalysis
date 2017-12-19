@@ -376,7 +376,7 @@ def AspectExtraction(trainset,testset):
     print('Aspect Extraction:\n')
 
     b1 = baselines.BaselineAspectExtractor(trainset['corpus'])
-    #predicted = b1.tag(testset['corpus'].corpus)
+    predicted1 = b1.tag(testset['corpus'].corpus)
     #print('Baseline: P = %f -- R = %f -- F1 = %f (#correct: %d, #retrieved: %d, #relevant: %d)'% Evaluate(testset['corpus'].corpus,predicted).aspect_extraction())
 
     # paths for CRF++
@@ -390,7 +390,7 @@ def AspectExtraction(trainset,testset):
     aspect_list = test_crfpp(crf_test_path, model_path, testset)
 
     predicted = tag(b1,testset['corpus'].corpus,aspect_list)
-    #print('MySystem: P = %f -- R = %f -- F1 = %f (#correct: %d, #retrieved: %d, #relevant: %d)'% Evaluate(testset['corpus'].corpus,predicted).aspect_extraction())
+    print('MySystem: P = %f -- R = %f -- F1 = %f (#correct: %d, #retrieved: %d, #relevant: %d)'% Evaluate(predicted1,predicted).aspect_extraction())
     return predicted
 
 
